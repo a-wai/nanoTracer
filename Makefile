@@ -1,8 +1,9 @@
 
+PROGRAMMER	= arduino
+PROG_PORT	= /dev/ttyACM0
+
 MCU			= atmega328p
 CPU_FREQ	= 16000000UL
-AVRDUDE_MCU	= m328p
-PROGRAMMER	= dragon_isp
 
 PROJECT		= nanoTracer
 
@@ -35,7 +36,7 @@ size: $(PROJECT).elf
 
 upload: $(PROJECT).hex
 	@echo 'Writing Flash image to device'
-	avrdude -p $(AVRDUDE_MCU) -c $(PROGRAMMER) -P usb -U flash:w:$(PROJECT).hex:i
+	avrdude -p $(MCU) -c $(PROGRAMMER) -P $(PROG_PORT) -U flash:w:$(PROJECT).hex:i
 
 # Other Targets
 clean:
