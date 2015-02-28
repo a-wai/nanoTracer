@@ -1,8 +1,7 @@
 
-PROGRAMMER	= dragon_isp
-PROG_PORT	= usb
+PROGRAMMER	= arduino
+PROG_PORT	= /dev/ttyACM0
 
-AVRDUDE_MCU	= m328p
 MCU			= atmega328p
 CPU_FREQ	= 16000000UL
 
