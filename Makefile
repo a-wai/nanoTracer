@@ -1,13 +1,12 @@
 
-PROGRAMMER	= dragon_isp
-PROG_PORT	= usb
+PROGRAMMER	= arduino
+PROG_PORT		= /dev/ttyACM0
+MCU					= atmega328p
+CPU_FREQ		= 16000000UL
 
-MCU			= atmega328p
-CPU_FREQ	= 16000000UL
+PROJECT			= nanoTracer
 
-PROJECT		= nanoTracer
-
-OBJS		= \
+OBJS				= \
 	src/drivers/adc.o \
 	src/drivers/serial.o \
 	src/main.o	\
