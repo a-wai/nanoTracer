@@ -1,6 +1,6 @@
 
-PROGRAMMER	= arduino
-PROG_PORT	= /dev/ttyACM0
+PROGRAMMER	= dragon_isp
+PROG_PORT	= usb
 
 MCU			= atmega328p
 CPU_FREQ	= 16000000UL
@@ -8,17 +8,17 @@ CPU_FREQ	= 16000000UL
 PROJECT		= nanoTracer
 
 OBJS		= \
-	drivers/adc.o \
-	drivers/serial.o \
-	main.o	\
-	tracer.o
+	src/drivers/adc.o \
+	src/drivers/serial.o \
+	src/main.o	\
+	src/tracer.o
 	
 %.o: %.c
 	@echo 'Building file: $<'
 	avr-gcc -Iinclude -Wall -Os -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=$(MCU) -DF_CPU=$(CPU_FREQ) -c -o "$@" "$<"
 	@echo ' '
 
-all: $(PROJECT).elf
+all: $(PROJECT).hex
 
 # Tool invocations
 $(PROJECT).elf: $(OBJS)
@@ -40,5 +40,5 @@ upload: $(PROJECT).hex
 
 # Other Targets
 clean:
-	-$(RM) *.o *.d drivers/*.o drivers/*.d $(PROJECT).map $(PROJECT).elf $(PROJECT).hex
+	-$(RM) src/*.o src/drivers/*.o $(PROJECT).elf $(PROJECT).hex
 	-@echo ' '
