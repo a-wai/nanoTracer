@@ -27,13 +27,13 @@
 
 uint16_t values[64];
 
-static uint8_t startAcquisition = 0;
-static uint16_t oldValue = 0;
-static uint8_t measureCount = 0;
-static uint8_t currentStep = 0;
-static uint8_t maxSteps = 0;
+static uint8_t  startAcquisition = 0;
+static uint16_t oldValue         = 0;
+static uint8_t  measureCount     = 0;
+static uint8_t  currentStep      = 0;
+static uint8_t  maxSteps         = 0;
 
-static uint8_t gridVoltages[MAX_STEPS];
+static uint8_t  gridVoltages[MAX_STEPS];
 
 void tracerStartAcquisition(void)
 {
@@ -107,8 +107,8 @@ void tracerSelectTube(char tube)
   {
     gridVoltages[i] = 0;
 
-    sprintf(msg, "Selected tube type ECC%c%c - \r\nMeasuring for %d grid voltages from -%dV to 0V\r\n", family, tube,
-        i + 1, gridVoltages[0] / 10);
+    sprintf(msg, "Selected tube type ECC%c%c - \r\nMeasuring for %d grid voltages from -%dV to 0V\r\n",
+        family, tube, i + 1, gridVoltages[0] / 10);
     serialSend(msg);
   }
 
