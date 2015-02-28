@@ -21,34 +21,34 @@
 
 #include "serial.h"
 
-static	char		txBuffer[512];
-static	int16_t	txPos = -1;
-static	int16_t	txLen = -1;
+static char     txBuffer[512];
+static int16_t  txPos = -1;
+static int16_t  txLen = -1;
 
 // Init the serial interface
 void serialInit(uint32_t br)
 {
-	uint16_t ubrr;
+  uint16_t ubrr;
 
   // Calculate baud rate (using /16 prescaler for the 16MHz Arduino clock)
-	ubrr = F_CPU / (16 * br) - 1;
-	UBRR0H = (uint8_t) (ubrr >> 8);
-	UBRR0L = (uint8_t) ubrr;
+  ubrr = F_CPU / (16 * br) - 1;
+  UBRR0H = (uint8_t) (ubrr >> 8);
+  UBRR0L = (uint8_t) ubrr;
 
-	// Disable Double Speed & Multi Processor Communication
-	UCSR0A &= ~(_BV(U2X0) | _BV(MPCM0));
-	// Disable USART0 interrupts & clear UCSZ02 (8-bit transmission)
-	UCSR0B &= ~(_BV(TXCIE0) | _BV(UDRIE0) | _BV(UCSZ02));
-	// Enable USART0 & RX complete interrupt
-	UCSR0B |= _BV(RXEN0) | _BV(TXEN0) | _BV(RXCIE0);
-	// Set asynchronous link, no parity bit, 1 stop bit
-	UCSR0C &= ~(_BV(UMSEL01) | _BV(UMSEL00) | _BV(UPM01) | _BV(UPM00) | _BV(USBS0));
-	// Set 8 data bits
-	UCSR0C |= _BV(UCSZ01) | _BV(UCSZ00);
+  // Disable Double Speed & Multi Processor Communication
+  UCSR0A &= ~(_BV(U2X0) | _BV(MPCM0));
+  // Disable USART0 interrupts & clear UCSZ02 (8-bit transmission)
+  UCSR0B &= ~(_BV(TXCIE0) | _BV(UDRIE0) | _BV(UCSZ02));
+  // Enable USART0 & RX complete interrupt
+  UCSR0B |= _BV(RXEN0) | _BV(TXEN0) | _BV(RXCIE0);
+  // Set asynchronous link, no parity bit, 1 stop bit
+  UCSR0C &= ~(_BV(UMSEL01) | _BV(UMSEL00) | _BV(UPM01) | _BV(UPM00) | _BV(USBS0));
+  // Set 8 data bits
+  UCSR0C |= _BV(UCSZ01) | _BV(UCSZ00);
 }
 
 // Wait for character reception and retrieve its value
-char	serialReceive(void)
+char serialReceive(void)
 {
   return UDR0;
 }
@@ -56,20 +56,20 @@ char	serialReceive(void)
 // Send a character
 void serialWrite()
 {
-	if (txPos >= 0)
-	{
-		UDR0 = txBuffer[txPos];
-		txPos++;
-		if (txPos >= txLen)
-		{
-			txPos = -1;
-		}
-	}
-	else
-	{
-		// Disable TXC interrupt
-		UCSR0B &= ~_BV(TXCIE0);
-	}
+  if (txPos >= 0)
+  {
+    UDR0 = txBuffer[txPos];
+    txPos++;
+    if (txPos >= txLen)
+    {
+      txPos = -1;
+    }
+  }
+  else
+  {
+    // Disable TXC interrupt
+    UCSR0B &= ~_BV(TXCIE0);
+  }
 }
 
 // Send a string over the serial line
@@ -78,22 +78,23 @@ void serialSend(char *str)
   txPos = 0;
   txLen = strlen(str);
   strcpy(txBuffer, str);
-  
+
   serialWrite();
-	UCSR0B |= _BV(TXCIE0);
+  UCSR0B |= _BV(TXCIE0);
 }
 
 void serialDebug(char *str)
 {
-	int i = 0;
+  int i = 0;
 
-	UCSR0B &= ~_BV(TXCIE0);
+  UCSR0B &= ~_BV(TXCIE0);
 
-	while (str[i])
-	{
-		while (!(UCSR0A & _BV(UDRE0)));
+  while (str[i])
+  {
+    while (!(UCSR0A & _BV(UDRE0)))
+      ;
 
-		UDR0 = str[i];
-		i++;
-	}
+    UDR0 = str[i];
+    i++;
+  }
 }

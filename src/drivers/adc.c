@@ -21,13 +21,13 @@
 
 #include "adc.h"
 
-static	uint8_t	adcContinue = 0;
+static uint8_t adcContinue = 0;
 
 void adcSelectSource(uint8_t pin)
 {
   // Sets the MUX3..0 bits of ADMUX accordingly with the selected source
   // See ATMega328P datasheet for details
-  switch(pin)
+  switch (pin)
   {
     case PIN_A0:
       ADMUX &= ~(_BV(MUX3) | _BV(MUX2) | _BV(MUX1) | _BV(MUX0));
@@ -70,35 +70,34 @@ void adcInit(uint8_t adPin)
   // Set ADC to single conversion mode
   ADCSRB = 0;
   // Start 1st conversion
-	BITSET(ADCSRA, ADSC);
+  BITSET(ADCSRA, ADSC);
 }
 
-void	adcStop(void)
+void adcStop(void)
 {
-	adcContinue = 0;
-	BITCLR(ADCSRA, ADIE);
+  adcContinue = 0;
+  BITCLR(ADCSRA, ADIE);
 }
 
-void	adcStart(void)
+void adcStart(void)
 {
-	// Clear ADC interrupt flag
-	BITSET(ADCSRA, ADIF);
+  // Clear ADC interrupt flag
+  BITSET(ADCSRA, ADIF);
 
   // Start ADC conversion & enable ADC interrupt
   ADCSRA |= _BV(ADSC) | _BV(ADIE);
 
-	adcContinue = 1;
+  adcContinue = 1;
 }
 
-
-uint16_t	adcRead(void)
+uint16_t adcRead(void)
 {
   uint16_t value = 0;
 
-	// Clear ADC interrupt flag
-	BITSET(ADCSRA, ADIF);
+  // Clear ADC interrupt flag
+  BITSET(ADCSRA, ADIF);
 
-	// Read value
+  // Read value
   // Value is stored on 10 bits : 2 MSB in ADCH, 8 LSB in ADCL
   value = ADCL;
   value += (ADCH << 8);

@@ -19,18 +19,40 @@
  *
  */
 
-#ifndef __AY_SERIAL_H
-#define __AY_SERIAL_H
+#ifndef MAIN_H_
+#define MAIN_H_
 
-#include <string.h>
+#include <stdint.h>
+#include <stdlib.h>
+#include <stdio.h>
 #include <avr/io.h>
+#include <avr/wdt.h>
+#include <avr/interrupt.h>
 
-void	serialInit			(uint32_t baudRate);
+#include "pins.h"
 
-char	serialReceive		(void);
-void 	serialWrite			(void);
+#include "drivers/serial.h"
+#include "drivers/adc.h"
 
-void 	serialSend			(char *str);
-void 	serialDebug			(char *str);
+#define MAX_NEGATIVE_VOLTAGE  6
 
-#endif
+#define BTN_PORT              PORT_DIG1
+#define BTN_DDR               DDR_DIG1
+#define BTN_PIN               PIN_D2
+
+#define	PIN_CURRENT           PIN_A0
+#define	PIN_VOLTAGE           PIN_A1
+#define	PIN_GRID              PIN_A2
+
+typedef enum
+{
+  MODE_NONE = 0,
+  MODE_START_ACQUISITION = 1,
+  MODE_CONVERSION_DONE = 2,
+  MODE_SERIAL_SENT = 3,
+  MODE_SERIAL_RECEIVED = 4,
+  MODE_PROCESS_RESULTS = 5,
+  MODE_PRINT_RESULTS = 6
+} program_mode_t;
+
+#endif /* MAIN_H_ */

@@ -19,21 +19,20 @@
  *
  */
 
-#ifndef TRACER_H_
-#define TRACER_H_
+#ifndef __ADC_H
+#define __ADC_H
 
-#include "main.h"
+#include <stdint.h>
+#include <avr/io.h>
 
-#define	MAX_STEPS	10
+#include "pins.h"
 
-void 	tracerNextStep(void);
-void	tracerStopAcquisition(void);
-void	tracerSetGridVoltage(uint8_t voltage);
-void	tracerSelectTube(char tube);
-void	tracerStartAcquisition(void);
+void      adcInit         (uint8_t);
 
-program_mode_t	tracerProcessAdc	(void);
+void      adcStart        (void);
+void      adcStop         (void);
 
-void 	tracerProcessResults(void);
+void      adcSelectSource (uint8_t pin);
+uint16_t  adcRead         (void);
 
-#endif /* TRACER_H_ */
+#endif
