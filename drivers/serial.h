@@ -25,12 +25,12 @@
 #include <string.h>
 #include <avr/io.h>
 
-void	serialInit			(uint32_t baudRate);
+void serialInit   (uint32_t baudRate);
 
-char	serialReceive		(void);
-void 	serialWrite			(void);
+char serialReceive(void);
+void serialWrite  (void);
 
-void 	serialSend			(char *str);
-void 	serialDebug			(char *str);
+void serialSend   (char *str);
+void serialDebug  (char *str);
 
 #endif

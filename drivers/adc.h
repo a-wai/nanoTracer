@@ -27,12 +27,12 @@
 
 #include "pins.h"
 
-void 			adcInit					(uint8_t);
+void      adcInit         (uint8_t);
 
-void 			adcStart				(void);
-void 			adcStop					(void);
+void      adcStart        (void);
+void      adcStop         (void);
 
-void 			adcSelectSource	(uint8_t pin);
-uint16_t	adcRead					(void);
+void      adcSelectSource (uint8_t pin);
+uint16_t  adcRead         (void);
 
 #endif
