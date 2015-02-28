@@ -1,6 +1,7 @@
 
 PROGRAMMER	= arduino
 PROG_PORT	= /dev/ttyACM0
+
 MCU			= atmega328p
 CPU_FREQ	= 16000000UL
 
