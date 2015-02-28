@@ -57,7 +57,7 @@ Each `Vg = ` line indicates the grid voltage used for this measurement. It is ex
 The following lines are the measurements in CSV format, the first value being the anode voltage in V, and the second value being the anode current in tenths of milliamperes. Thus, the line `92,2` means the tube was drawing 0.2mA when the anode voltage was 92V (and the grid voltage -2V). You can then copy/paste these lines in your favorite spreadsheet to exploit the measurements (see the example LibreOffice file in the `spreadsheet/` directory).
 
 ## Harware
-nanoTracer is a DIY project. You will find all the information needed to build your own tracer under the `elec/` directory.
+nanoTracer is a DIY project. You will find all the information needed to build your own tracer under the `kicad/` directory.
 
 ## License
 This project is distributed under the GNU GPL v3 license. Please see the COPYING file or [the GNU website](http://www.gnu.org/licenses/#GPL) for details.
