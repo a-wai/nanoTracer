@@ -38,7 +38,7 @@ Once the Arduino is ready, it should ouput the string `Starting...`. You can the
 - `8` for an ECC88
 - `9` for an ECC99
 
-The measure is started by typing '#'. The Arduino then outputs a list of measures of the form :
+The measure is started by typing `#` in the serial terminal or pressing the hardware button connected to pin D2. The Arduino then outputs a list of measures of the form :
 
 `Vg = 20`
 
