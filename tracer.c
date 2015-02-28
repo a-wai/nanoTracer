@@ -23,19 +23,19 @@
 
 #include "tracer.h"
 
-#define 	MAX_GRID_VOLTAGE	(10 * MAX_NEGATIVE_VOLTAGE)
+#define   MAX_GRID_VOLTAGE  (10 * MAX_NEGATIVE_VOLTAGE)
 
 uint16_t	values[64];
 
-static uint8_t	startAcquisition	= 0;
-static uint16_t	oldValue			= 0;
-static uint8_t	measureCount	= 0;
-static uint8_t	currentStep		= 0;
-static uint8_t	maxSteps			= 0;
+static uint8_t  startAcquisition	= 0;
+static uint16_t oldValue			= 0;
+static uint8_t  measureCount	= 0;
+static uint8_t  currentStep		= 0;
+static uint8_t  maxSteps			= 0;
 
-static uint8_t	gridVoltages[MAX_STEPS];
+static uint8_t  gridVoltages[MAX_STEPS];
 
-void	tracerStartAcquisition(void)
+void  tracerStartAcquisition(void)
 {
 	if (maxSteps > 0)
 	{
@@ -53,7 +53,7 @@ void	tracerStartAcquisition(void)
 	}
 }
 
-void	tracerSelectTube(char tube)
+void  tracerSelectTube(char tube)
 {
 	uint8_t maxVoltage, voltageStep, voltage, i = 0;
 	char		family = 0;

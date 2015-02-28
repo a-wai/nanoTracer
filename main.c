@@ -22,18 +22,18 @@
 #include "main.h"
 #include "tracer.h"
 
-static program_mode_t	mode = MODE_NONE;
+static program_mode_t mode = MODE_NONE;
 
-static void	mcuInit(void)
+static void mcuInit(void)
 {
-	// Enable sleep mode in idle mode
+  // Enable sleep mode in idle mode
   SMCR = _BV(SE);
 
   // Disable ADC power reduction
   BITCLR(PRR, PRADC);
 }
 
-static void	ioInit(void)
+static void ioInit(void)
 {
   // Configure pin D2 as input
   BITCLR(BTN_PORT, BTN_PIN);
@@ -44,7 +44,7 @@ static void	ioInit(void)
   EIMSK = _BV(INT0);
 }
 
-static void	pwmInit(void)
+static void pwmInit(void)
 {
   // Configure pin D6 as output
   BITSET(PORT_DIG1, PIN_D6);
@@ -57,64 +57,64 @@ static void	pwmInit(void)
   OCR0A = 200;
 }
 
-int main (void)
+int main(void)
 {
-	char 						cmd;
-	program_mode_t	willDo = MODE_NONE;
+  char cmd;
+  program_mode_t willDo = MODE_NONE;
 
-	wdt_disable();
+  wdt_disable();
 
-	cli();
+  cli();
 
-	mcuInit();
+  mcuInit();
 
-	ioInit();
+  ioInit();
   pwmInit();
   serialInit(500000);
   adcInit(PIN_VOLTAGE);
 
   sei();
 
-	serialDebug("Starting...\r\n");
+  serialDebug("Starting...\r\n");
 
-  for(;;)
+  for (;;)
   {
-  	if (willDo)
-  	{
-  		mode = willDo;
-  		willDo = MODE_NONE;
-  	}
-  	else
-  	{
-  		asm volatile ("sleep\n\t");
-  	}
+    if (willDo)
+    {
+      mode = willDo;
+      willDo = MODE_NONE;
+    }
+    else
+    {
+      asm volatile ("sleep\n\t");
+    }
 
     switch (mode)
     {
-			case MODE_START_ACQUISITION:
-				tracerStartAcquisition();
-				break;
-			case MODE_CONVERSION_DONE:
-				tracerProcessAdc();
-				break;
-			case MODE_SERIAL_RECEIVED:
-				cmd = serialReceive();
-				switch(cmd)
-				{
-					case '#':
-						willDo = MODE_START_ACQUISITION;
-						break;
-					default:
-						tracerSelectTube(cmd);
-						break;
-				}
-				break;
-			case MODE_SERIAL_SENT:
-				serialWrite();
-				break;
-			default:
-				break;
-		}
+      case MODE_START_ACQUISITION:
+        tracerStartAcquisition();
+        break;
+      case MODE_CONVERSION_DONE:
+        tracerProcessAdc();
+        break;
+      case MODE_SERIAL_RECEIVED:
+        cmd = serialReceive();
+        switch (cmd)
+        {
+          case '#':
+            willDo = MODE_START_ACQUISITION;
+            break;
+          default:
+            tracerSelectTube(cmd);
+            break;
+        }
+        break;
+      case MODE_SERIAL_SENT:
+        serialWrite();
+        break;
+      default:
+        break;
+    }
 
     mode = MODE_NONE;
   }
@@ -124,20 +124,20 @@ int main (void)
 
 ISR(INT0_vect)
 {
-	mode = MODE_START_ACQUISITION;
+  mode = MODE_START_ACQUISITION;
 }
 
 ISR(ADC_vect)
 {
-	mode = MODE_CONVERSION_DONE;
+  mode = MODE_CONVERSION_DONE;
 }
 
 ISR(USART_RX_vect)
 {
-	mode = MODE_SERIAL_RECEIVED;
+  mode = MODE_SERIAL_RECEIVED;
 }
 
 ISR(USART_TX_vect)
 {
-	mode = MODE_SERIAL_SENT;
+  mode = MODE_SERIAL_SENT;
 }

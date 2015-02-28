@@ -26,14 +26,14 @@
 
 #define	MAX_STEPS	10
 
-void 	tracerNextStep(void);
-void	tracerStopAcquisition(void);
-void	tracerSetGridVoltage(uint8_t voltage);
-void	tracerSelectTube(char tube);
-void	tracerStartAcquisition(void);
+void tracerNextStep(void);
+void tracerStopAcquisition(void);
+void tracerSetGridVoltage(uint8_t voltage);
+void tracerSelectTube(char tube);
+void tracerStartAcquisition(void);
 
-program_mode_t	tracerProcessAdc	(void);
+program_mode_t tracerProcessAdc(void);
 
-void 	tracerProcessResults(void);
+void tracerProcessResults(void);
 
 #endif /* TRACER_H_ */
