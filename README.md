@@ -40,17 +40,14 @@ Once the Arduino is ready, it should ouput the string `Starting...`. You can the
 
 The measure is started by typing `#` in the serial terminal or pressing the hardware button connected to pin D2. The Arduino then outputs a list of measures of the form :
 
-`Vg = 20`
-
-`57,1`
-
-`76,1`
-
-`92,2`
-
-`108,5`
-
-`...`
+```
+Vg = 20
+57,1
+76,1
+92,2
+108,5
+...
+```
 
 Each `Vg = ` line indicates the grid voltage used for this measurement. It is expressed in tenths of volts, for instance, `Vg = 20` means the grid voltage is -2V.
 
