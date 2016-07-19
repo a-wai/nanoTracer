@@ -1,4 +1,4 @@
-update=mar. 19 juil. 2016 22:11:17 CEST
+update=mar. 19 juil. 2016 23:45:22 CEST
 version=1
 last_client=kicad
 [cvpcb]
@@ -101,3 +101,4 @@ LibName39=upverter/opto-resistor
 LibName40=arduino_uno
 LibName41=w_connectors
 LibName42=upverter/borniers
+LibName43=freetronics/freetronics_schematic
