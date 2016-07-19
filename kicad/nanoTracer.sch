@@ -252,7 +252,6 @@ F 3 "" H 900 1450 60  0000 C CNN
 	1    900  1450
 	-1   0    0    -1  
 $EndComp
-NoConn ~ 4100 5850
 NoConn ~ 4100 5950
 NoConn ~ 4100 6050
 NoConn ~ 4100 6250
@@ -539,17 +538,6 @@ $EndComp
 Wire Wire Line
 	2900 1150 2700 1150
 NoConn ~ 4100 6350
-$Comp
-L ARDUINO_UNO_REV3_PINS J1
-U 1 1 578E9E85
-P 3600 6450
-F 0 "J1" H 3600 7300 60  0000 C CNN
-F 1 "ARDUINO_UNO_REV3_PINS" H 3650 5600 60  0000 C CNN
-F 2 "" H 3600 6450 60  0000 C CNN
-F 3 "" H 3600 6450 60  0000 C CNN
-	1    3600 6450
-	-1   0    0    -1  
-$EndComp
 Wire Wire Line
 	4100 6150 4800 6150
 $Comp
@@ -851,9 +839,9 @@ Text Label 4550 6750 2    60   ~ 0
 UG
 Text Label 8750 3150 0    60   ~ 0
 IA
-Text Label 4550 7050 2    60   ~ 0
+Text Label 4550 5750 2    60   ~ 0
 BTN_UP
-Text Label 4550 7150 2    60   ~ 0
+Text Label 4550 5850 2    60   ~ 0
 BTN_DN
 Text Label 5100 6750 0    60   ~ 0
 UA
@@ -887,14 +875,9 @@ Wire Wire Line
 Wire Wire Line
 	4100 6950 5500 6950
 Wire Wire Line
-	4100 7050 4750 7050
-Wire Wire Line
-	4550 7150 4100 7150
-Wire Wire Line
 	4550 6750 4100 6750
 Wire Wire Line
 	4100 6650 4550 6650
-NoConn ~ 4100 5750
 Text Label 2650 6950 0    60   ~ 0
 BTN_OK
 Text Label 2650 6850 0    60   ~ 0
@@ -1452,14 +1435,6 @@ F 3 "" H 2050 6900 50  0000 C CNN
 	1    2050 6900
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	2400 7450 4750 7450
-Wire Wire Line
-	4750 7450 4750 7050
-Wire Wire Line
-	4550 7150 4550 7350
-Wire Wire Line
-	4550 7350 2400 7350
 $Comp
 L GND #PWR034
 U 1 1 57910308
@@ -1491,4 +1466,29 @@ Wire Wire Line
 Wire Wire Line
 	2700 7050 2700 7150
 NoConn ~ 2400 7150
+$Comp
+L ARDUINO_UNO_REV3_PINS J1
+U 1 1 578E9E85
+P 3600 6450
+F 0 "J1" H 3600 7300 60  0000 C CNN
+F 1 "ARDUINO_UNO_REV3_PINS" H 3650 5600 60  0000 C CNN
+F 2 "" H 3600 6450 60  0000 C CNN
+F 3 "" H 3600 6450 60  0000 C CNN
+	1    3600 6450
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4100 5850 4550 5850
+Wire Wire Line
+	4550 5750 4100 5750
+Text Label 2950 7350 2    60   ~ 0
+BTN_UP
+Text Label 2950 7450 2    60   ~ 0
+BTN_DN
+Wire Wire Line
+	2400 7350 2950 7350
+Wire Wire Line
+	2400 7450 2950 7450
+NoConn ~ 4100 7050
+NoConn ~ 4100 7150
 $EndSCHEMATC
