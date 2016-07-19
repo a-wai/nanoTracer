@@ -834,10 +834,6 @@ Text Label 7550 4550 0    60   ~ 0
 UG
 Text Label 4200 6000 0    60   ~ 0
 IA
-Text Label 10350 3150 2    60   ~ 0
-BTN_UP
-Text Label 10350 3250 2    60   ~ 0
-BTN_DN
 Text Label 7300 4550 2    60   ~ 0
 UA
 Text Label 6300 4550 0    60   ~ 0
@@ -1452,18 +1448,14 @@ Wire Wire Line
 Wire Wire Line
 	10250 4850 10250 4950
 NoConn ~ 10550 4950
-Wire Wire Line
-	9900 3250 10350 3250
-Wire Wire Line
-	10350 3150 9900 3150
 Text Label 10000 5150 0    60   ~ 0
 BTN_UP
 Text Label 10000 5250 0    60   ~ 0
 BTN_DN
 Wire Wire Line
-	10550 5150 10000 5150
+	8000 5150 10550 5150
 Wire Wire Line
-	10550 5250 10000 5250
+	7900 5250 10550 5250
 $Comp
 L ARDUINO_SHIELD SHIELD1
 U 1 1 578EA1FF
@@ -1475,8 +1467,6 @@ F 3 "" H 8950 4150 60  0000 C CNN
 	1    8950 4150
 	1    0    0    -1  
 $EndComp
-NoConn ~ 8000 4850
-NoConn ~ 8000 4950
 NoConn ~ 9900 4850
 NoConn ~ 9900 4950
 NoConn ~ 9900 3950
@@ -1504,4 +1494,14 @@ Wire Wire Line
 	10400 4150 10550 4150
 Wire Notes Line
 	4300 5400 6050 5400
+NoConn ~ 9900 3450
+NoConn ~ 9900 3350
+NoConn ~ 9900 3250
+NoConn ~ 9900 3150
+Wire Wire Line
+	8000 5150 8000 4950
+Wire Wire Line
+	7900 5250 7900 4850
+Wire Wire Line
+	7900 4850 8000 4850
 $EndSCHEMATC
