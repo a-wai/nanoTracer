@@ -1,0 +1,3 @@
+(fp_lib_table
+  (lib (name w_pth_diodes)(type Legacy)(uri /home/a-wai/Documents/Elec/Libs/Kicad/w_pth_diodes.mod)(options "")(descr ""))
+)
