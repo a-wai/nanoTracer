@@ -303,12 +303,12 @@ $Comp
 L Diode_Bridge D1
 U 1 1 5788A706
 P 2300 1150
-F 0 "D1" H 2050 1450 50  0000 C CNN
-F 1 "B80C1500" H 2550 800 50  0000 C CNN
+F 0 "D1" H 2050 850 50  0000 C CNN
+F 1 "B80C1500" H 2550 1500 50  0000 C CNN
 F 2 "w_pth_diodes:bridge_wob" H 2300 1150 50  0001 C CNN
 F 3 "" H 2300 1150 50  0000 C CNN
 	1    2300 1150
-	1    0    0    -1  
+	1    0    0    1   
 $EndComp
 $Comp
 L CP1 C1
@@ -323,8 +323,6 @@ F 3 "" H 2900 1300 50  0000 C CNN
 $EndComp
 Wire Wire Line
 	1250 750  2300 750 
-Wire Wire Line
-	1250 1550 2300 1550
 $Comp
 L GND #PWR05
 U 1 1 5788B9B5
@@ -1404,7 +1402,14 @@ Wire Wire Line
 Wire Wire Line
 	1250 950  1250 1350
 Wire Wire Line
+	1250 1550 1450 1550
+Wire Wire Line
 	1450 1550 1450 750 
 Connection ~ 1450 750 
-Connection ~ 1450 1550
+Wire Wire Line
+	1250 1350 1750 1350
+Wire Wire Line
+	1750 1350 1750 1550
+Wire Wire Line
+	1750 1550 2300 1550
 $EndSCHEMATC
