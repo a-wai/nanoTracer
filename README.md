@@ -59,4 +59,4 @@ nanoTracer is a DIY project. You will find all the information needed to build y
 ## License
 Source code for the software is distributed under the GNU GPL v3 license. Please see the COPYING.software file or [the GNU website](http://www.gnu.org/licenses/#GPL) for details.
 
-Hardware design files are distributed under the CERN Open Hardware Licence v1.2. Please see the COPYing.hardware file or [the Open Hardware Repository website](http://www.ohwr.org/licenses/cern-ohl/v1.2) for details.
+Hardware design files are distributed under the CERN Open Hardware Licence v1.2. Please see the COPYING.hardware file or [the Open Hardware Repository website](http://www.ohwr.org/licenses/cern-ohl/v1.2) for details.
